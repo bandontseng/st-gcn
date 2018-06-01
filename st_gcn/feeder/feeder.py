@@ -80,7 +80,7 @@ class Feeder(torch.utils.data.Dataset):
             self.data = np.load(self.data_path, mmap_mode='r')
         else:
             self.data = np.load(self.data_path)
-            
+
         if self.debug:
             self.label = self.label[0:100]
             self.data = self.data[0:100]
@@ -107,7 +107,7 @@ class Feeder(torch.utils.data.Dataset):
         # get data
         data_numpy = np.array(self.data[index])
         label = self.label[index]
-        
+
         # normalization
         if self.normalization:
             data_numpy = (data_numpy - self.mean_map) / self.std_map
