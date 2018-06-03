@@ -69,6 +69,7 @@ if __name__ == "__main__":
                 arg.stgcn_data_array += [frame_data]
 
             video_category = video_name.split("/")[0]
+            video_name = video_name.replace("/", ".")
 
             if video_category not in label_key_index_mapping:
                 label_key_index_mapping[video_category] = len(label_key_index_mapping)
