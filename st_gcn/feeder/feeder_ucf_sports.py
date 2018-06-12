@@ -17,8 +17,8 @@ from torchvision import datasets, transforms
 import time
 
 # operation
-from . import tools
-#import tools
+# from . import tools
+# import tools
 
 
 class Feeder_ucf_sports(torch.utils.data.Dataset):
@@ -123,9 +123,9 @@ class Feeder_ucf_sports(torch.utils.data.Dataset):
                 data_numpy[2, frame_index, :, m] = score
 
         # centralization
-        data_numpy[0:2] = data_numpy[0:2] - 0.5
-        data_numpy[0][data_numpy[2] == 0] = 0
-        data_numpy[1][data_numpy[2] == 0] = 0
+        # data_numpy[0:2] = data_numpy[0:2] - 0.5
+        # data_numpy[0][data_numpy[2] == 0] = 0
+        # data_numpy[1][data_numpy[2] == 0] = 0
 
         # get & check label index
         label = video_info['label_index']
@@ -252,5 +252,5 @@ if __name__ == '__main__':
     label_path = './data/ucf_sports/poses/fake_labels.json'
     graph = 'st_gcn.graph.Kinetics'
     # test(data_path, label_path, vid='iqkx0rrCUCo', graph=graph)
-    test(data_path, label_path, vid="Kicking-Side.006", graph=graph)
+    test(data_path, label_path, vid="Lifting.005", graph=graph)
     # test(data_path, label_path, vid = 11199, graph=graph)

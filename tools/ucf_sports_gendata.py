@@ -40,8 +40,8 @@ def gendata(
     feeder = Feeder_ucf_sports(
         data_path=data_path,
         label_path=label_path,
-        num_person_in=num_person_in,
-        num_person_out=num_person_out,
+        #num_person_in=num_person_in,
+        #num_person_out=num_person_out,
         window_size=max_frame)
 
     sample_name = feeder.sample_name

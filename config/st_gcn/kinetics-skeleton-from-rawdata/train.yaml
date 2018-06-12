@@ -4,14 +4,14 @@ work_dir: ./work_dir/Kinetics/ST_GCN
 # read data from original kenetics-skeleton dataset
 feeder: st_gcn.feeder.Feeder_kinetics
 train_feeder_args:
-  data_path: ./data/Kinetics/kinetics-skeleton/kinetics_train
-  label_path : ./data/Kinetics/kinetics-skeleton/kinetics_train_label.json
+  data_path: /store/Kinetics_skeleton/kinetics-skeleton/kinetics_train
+  label_path : /store/Kinetics_skeleton/kinetics-skeleton/kinetics_train_label.json
   random_choose: True
   random_move: True
-  window_size: 150 
+  window_size: 150
 test_feeder_args:
-  data_path: ./data/Kinetics/kinetics-skeleton/kinetics_val
-  label_path : ./data/Kinetics/kinetics-skeleton/kinetics_val_label.json
+  data_path: /store/Kinetics_skeleton/kinetics-skeleton/kinetics_val
+  label_path : /store/Kinetics_skeleton/kinetics-skeleton/kinetics_val_label.json
 
 # model
 model: st_gcn.net.ST_GCN
@@ -37,7 +37,7 @@ step: [20, 30, 40, 50]
 device: [0,1,2,3]
 batch_size: 256
 test_batch_size: 256
-num_epoch: 60 
+num_epoch: 60
 nesterov: True
 save_interval: 10
 

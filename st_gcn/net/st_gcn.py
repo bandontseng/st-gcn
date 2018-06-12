@@ -23,7 +23,7 @@ class Model(nn.Module):
               T is the length of the sequence,
               V is the number of joints or graph nodes,
           and M is the number of people.
-    
+
     Arguments:
         About shape:
             channel (int): Number of channels in the input data
@@ -152,16 +152,26 @@ class Model(nn.Module):
         for m in self.backbone:
             x = m(x)
 
+        print("after backbone x.shape=" + str(x.shape))
+
         # V pooling
         x = F.avg_pool2d(x, kernel_size=(1, V))
+
+        print("after V pooling x.shape=" + str(x.shape))
 
         # M pooling
         c = x.size(1)
         t = x.size(2)
         x = x.view(N, M, c, t).mean(dim=1).view(N, c, t)
 
+        print("after M pooling x.shape=" + str(x.shape))
+
         # T pooling
         x = F.avg_pool1d(x, kernel_size=x.size()[2])
+
+        print("After T pooling x.shape=" + str(x.shape))
+        import sys
+        sys.exit(0)
 
         # C fcn
         x = self.fcn(x)

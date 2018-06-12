@@ -17,7 +17,8 @@ from torchvision import datasets, transforms
 import time
 
 # operation
-from . import tools
+# from . import tools
+import tools
 
 
 class Feeder_kinetics(torch.utils.data.Dataset):
@@ -173,7 +174,7 @@ def test(data_path, label_path, vid=None, graph=None):
     import matplotlib.pyplot as plt
     loader = torch.utils.data.DataLoader(
         dataset=Feeder_kinetics(
-            data_path, label_path, pose_matching=False, num_person=10),
+            data_path, label_path, pose_matching=False, num_person_in=10, num_person_out=10),
         batch_size=64,
         shuffle=False,
         num_workers=2)
@@ -232,6 +233,8 @@ def test(data_path, label_path, vid=None, graph=None):
                 for i, (v1, v2) in enumerate(edge):
                     pose[m][i].set_xdata(data[0, t, [v1, v2], m])
                     pose[m][i].set_ydata(-data[1, t, [v1, v2], m])
+                    print("x: %s" % (str(data[0, t, [v1, v2], m])))
+                    print("x: %s" % (str(-data[1, t, [v1, v2], m])))
             fig.canvas.draw()
             plt.pause(0.001)
             # raw_input(t)
@@ -246,9 +249,11 @@ def import_class(name):
 
 
 if __name__ == '__main__':
-    data_path = './data/kinetics-skeleton/kinetics_val'
-    label_path = './data/kinetics-skeleton/kinetics_val_label.json'
+    #data_path = './data/kinetics-skeleton/kinetics_val'
+    #label_path = './data/kinetics-skeleton/kinetics_val_label.json'
+    data_path = "/store/Kinetics_skeleton/kinetics-skeleton/kinetics_val"
+    label_path = "/store/Kinetics_skeleton/kinetics-skeleton/kinetics_val_label.json"
     graph = 'st_gcn.graph.Kinetics'
-    # test(data_path, label_path, vid='iqkx0rrCUCo', graph=graph)
-    test(data_path, label_path, vid=11111, graph=graph)
+    test(data_path, label_path, vid='iqkx0rrCUCo', graph=graph)
+    # test(data_path, label_path, vid=11111, graph=graph)
     # test(data_path, label_path, vid = 11199, graph=graph)

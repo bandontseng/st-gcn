@@ -2,8 +2,8 @@
 # read data from original kenetics-skeleton dataset
 feeder: st_gcn.feeder.Feeder_kinetics
 test_feeder_args:
-  data_path: ./data/Kinetics/kinetics-skeleton/kinetics_val
-  label_path : ./data/Kinetics/kinetics-skeleton/kinetics_val_label.json
+  data_path: /store/Kinetics_skeleton/kinetics-skeleton/kinetics_val
+  label_path : /store/Kinetics_skeleton/kinetics-skeleton/kinetics_val_label.json
 
 # model
 model: st_gcn.net.ST_GCN
@@ -21,10 +21,11 @@ model_args:
   use_data_bn: True
 
 
-# test 
+# test
 phase: test
 device: 0
-test_batch_size: 64
+# test_batch_size: 64
+test_batch_size: 10
 weights: ./model/kinetics-st_gcn.pt
 
 

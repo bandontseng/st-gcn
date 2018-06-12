@@ -17,7 +17,8 @@ from torchvision import datasets, transforms
 import time
 
 # operation
-from . import tools
+# from . import tools
+import tools
 
 
 class Feeder(torch.utils.data.Dataset):
@@ -166,6 +167,7 @@ def test(data_path, label_path, vid=None):
                 x = data[n, 0, t, :, 0]
                 y = data[n, 1, t, :, 0]
                 z = data[n, 2, t, :, 0]
+                print("x, y, z=%s, %s, %s" % (str(x), str(y), str(z)))
                 pose.set_xdata(x)
                 pose.set_ydata(y)
                 fig.canvas.draw()
@@ -173,7 +175,17 @@ def test(data_path, label_path, vid=None):
 
 
 if __name__ == '__main__':
-    data_path = "./data/NTU-RGB-D/xview/val_data.npy"
-    label_path = "./data/NTU-RGB-D/xview/val_label.pkl"
+    # data_path = "./data/NTU-RGB-D/xview/val_data.npy"
+    # label_path = "./data/NTU-RGB-D/xview/val_label.pkl"
 
-    test(data_path, label_path, vid='S003C001P017R001A044')
+    # test(data_path, label_path, vid='S003C001P017R001A044')
+
+
+    data_path = "./data/Kinetics/kinetics-skeleton/val_data.npy"
+    label_path = "./data/Kinetics/kinetics-skeleton/val_label.pkl"
+    test(data_path, label_path, vid="Kh-3mJpLnBU")
+
+
+    # data_path = "./data/ucf_sports/poses/val_data.npy"
+    # label_path = "./data/ucf_sports/poses/val_label.pkl"
+    # test(data_path, label_path, vid="Kicking-Side.005")

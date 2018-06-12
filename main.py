@@ -187,6 +187,9 @@ class Processor():
         Model = import_class(self.arg.model)
         self.model = Model(**self.arg.model_args).cuda(output_device)
         self.loss = nn.CrossEntropyLoss().cuda(output_device)
+        # print(self.model)
+        # import sys
+        # sys.exit(0)
 
         if self.arg.weights:
             self.print_log('Load weights from {}.'.format(self.arg.weights))
